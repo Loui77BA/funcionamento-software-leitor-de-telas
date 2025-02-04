@@ -20,7 +20,7 @@ Isso significa que o leitor de telas não acessa a tela, mas sim a área de mem�
 ## Funcionamento do leitor de telas
 
 ```mermaid
-graph LR;
+graph TD;
     A["O leitor de telas possui a notável habilidade de analisar as informações recuperadas do buffer de tela. Esse processo de análise envolve várias etapas-chave, são elas:"]
 
     A --> B["01 - Reconhecimento de Caracteres de Texto (RCT): O software identifica e interpreta caracteres de texto individuais dentro dos dados do buffer."]
@@ -44,23 +44,23 @@ graph TD;
 
     A --> B["Isso pode ser alcançado por meio de dois métodos principais:"]
 
-    B --> C["Saída Braille"]
-    B --> D["Saída de Áudio"]
+    subgraph Braille
+        B --> C["Saída Braille"]
+        C --> E["O leitor de telas também converte as informações para o código de escrita Braille, os dados convertidos são então enviados para um display Braille atualizável, também conhecido como linha Braille, um dispositivo de hardware especializado com uma série de pinos que podem ser elevados ou abaixados para formar caracteres Braille."]
+        E --> F["Os displays Braille modernos podem exibir uma ampla gama de informações, incluindo texto, elementos de interface do usuário e até mesmo gráficos simples."]
+        E --> G["Além disso, muitos displays Braille oferecem controles de navegação integrados, permitindo que as pessoas interajam com aplicativos e naveguem pela tela de maneira eficaz."]
+    end
 
-    C --> E["O leitor de telas também converte as informações para o código de escrita Braille, os dados convertidos são então enviados para um display Braille atualizável, também conhecido como linha Braille, um dispositivo de hardware especializado com uma série de pinos que podem ser elevados ou abaixados para formar caracteres Braille."]
-
-    E --> F["Os displays Braille modernos podem exibir uma ampla gama de informações, incluindo texto, elementos de interface do usuário e até mesmo gráficos simples."]
-    E --> G["Além disso, muitos displays Braille oferecem controles de navegação integrados, permitindo que as pessoas interajam com aplicativos e naveguem pela tela de maneira eficaz."]
-
-    D --> H["O leitor de telas utiliza um mecanismo TTS (Text To Speech - Texto para fala), que atua como um tradutor digital, convertendo os caracteres de texto capturados em linguagem falada."]
-
-    H --> I["As pessoas frequentemente podem personalizar vários aspectos da saída de voz, como:"]
-    H --> J["Os mecanismos TTS modernos incorporam algoritmos sofisticados para garantir uma fala natural."]
-
-    I --> K["Tom: Ajustando a altura ou a profundidade da voz."]
-    I --> L["Velocidade de fala: Controlando a velocidade com que o texto é falado."]
-    I --> M["Volume: Ajustando o volume da saída de voz."]
-    I --> N["Seleção de Voz: Escolhendo entre uma variedade de vozes pré-gravadas com diferentes sotaques ou timbres."]
+    subgraph Audio
+        B --> D["Saída de Áudio"]
+        D --> H["O leitor de telas utiliza um mecanismo TTS (Text To Speech - Texto para fala), que atua como um tradutor digital, convertendo os caracteres de texto capturados em linguagem falada."]
+        H --> I["As pessoas frequentemente podem personalizar vários aspectos da saída de voz, como:"]
+        H --> J["Os mecanismos TTS modernos incorporam algoritmos sofisticados para garantir uma fala natural."]
+        I --> K["Tom: Ajustando a altura ou a profundidade da voz."]
+        I --> L["Velocidade de fala: Controlando a velocidade com que o texto é falado."]
+        I --> M["Volume: Ajustando o volume da saída de voz."]
+        I --> N["Seleção de Voz: Escolhendo entre uma variedade de vozes pré-gravadas com diferentes sotaques ou timbres."]
+    end
 ```
 
 O diagrama anterior destaca os métodos de saída de informações acessíveis usados pelos leitores de tela para fornecer feedback auditivo e tátil para pessoas com deficiência visual. Ele descreve como os leitores de tela convertem dados brutos em formatos acessíveis, como Braille e saída de áudio, para facilitar a interação com sistemas digitais.
